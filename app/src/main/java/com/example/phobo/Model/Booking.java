@@ -3,6 +3,7 @@ package com.example.phobo.Model;
 import java.util.Date;
 
 public class Booking {
+
     private int id;
 
     private Customer customer;
