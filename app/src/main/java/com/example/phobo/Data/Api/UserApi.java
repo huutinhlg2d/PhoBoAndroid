@@ -17,7 +17,7 @@ public interface UserApi {
 
     @POST("user/login")
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    Single<List<User>> login(@Body User user);
+    Single<User> login(@Body User user);
 
     @POST("user/register")
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
