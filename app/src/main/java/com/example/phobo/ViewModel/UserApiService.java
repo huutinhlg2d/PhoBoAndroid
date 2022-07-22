@@ -2,6 +2,7 @@ package com.example.phobo.ViewModel;
 
 import com.example.phobo.Data.RetrofitInstance;
 import com.example.phobo.Data.Api.UserApi;
+import com.example.phobo.Model.Photographer;
 import com.example.phobo.Model.User;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public class UserApiService implements IApiService<User, Integer>{
     @Override
     public Single<List<User>> getAll() {
         return userApi.getUsers();
+    }
+
+    public Single<List<Photographer>> getUsersRolePhotographer() {
+        return  userApi.getUsersRolePhotographer();
     }
 
     @Override

@@ -10,7 +10,7 @@ public class User {
     private int id;
 
     @SerializedName("firebaseUid")
-    private int firebaseUid;
+    private String firebaseUid;
 
     @SerializedName("name")
     private String name;
@@ -33,6 +33,18 @@ public class User {
     @SerializedName("isDeleted")
     private boolean isDeleted;
 
+    public User(int id, String firebaseUid, String name, String email, String password, String avatarUrl, Date dateOfBirth, UserRole role, boolean isDeleted) {
+        this.id = id;
+        this.firebaseUid = firebaseUid;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.avatarUrl = avatarUrl;
+        this.dateOfBirth = dateOfBirth;
+        this.role = role;
+        this.isDeleted = isDeleted;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -48,6 +60,8 @@ public class User {
                 '}';
     }
 
+
+
     public int getId() {
         return id;
     }
@@ -56,11 +70,11 @@ public class User {
         this.id = id;
     }
 
-    public int getFirebaseUid() {
+    public String getFirebaseUid() {
         return firebaseUid;
     }
 
-    public void setFirebaseUid(int firebaseUid) {
+    public void setFirebaseUid(String firebaseUid) {
         this.firebaseUid = firebaseUid;
     }
 

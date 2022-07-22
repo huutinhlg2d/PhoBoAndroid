@@ -7,6 +7,7 @@ import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 
+import com.example.phobo.Model.Photographer;
 import com.example.phobo.Model.User;
 import com.example.phobo.ViewModel.UserApiService;
 import com.example.phobo.databinding.ActivityMainBinding;
@@ -31,14 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
 //         userApiService = new UserApiService();
 //
-//        userApiService.getAll().subscribeOn(Schedulers.newThread())
+//        userApiService.getUsersRolePhotographer().subscribeOn(Schedulers.newThread())
 //                .subscribeOn(AndroidSchedulers.mainThread())
-//                .subscribeWith(new DisposableSingleObserver<List<User>>() {
+//                .subscribeWith(new DisposableSingleObserver<List<Photographer>>() {
 //                    @Override
-//                    public void onSuccess(@NonNull List<User> users) {
+//                    public void onSuccess(@NonNull List<Photographer> users) {
 //                        Log.d("DEBUG", "start");
-//                        for (User user: users) {
-//                            System.out.println(1);
+//                        for (Photographer user: users) {
 //                            Log.d("DEBUG", "get");
 //                            Log.d("LIST", user.toString());
 //                        }
