@@ -2,10 +2,11 @@ package com.example.phobo.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
     @SerializedName("id")
     private int id;
 
@@ -46,5 +47,26 @@ public class User {
                 ", role=" + role +
                 ", isDeleted=" + isDeleted +
                 '}';
+    }
+
+    public User( String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String name, String email, String password, Date dateOfBirth, UserRole role, boolean isDeleted) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.role = role;
+        this.isDeleted = isDeleted;
+    }
+    public User( String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
