@@ -1,4 +1,4 @@
-package com.example.phobo;
+package com.example.phobo.View;
 
 import android.os.Bundle;
 
@@ -8,12 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.phobo.databinding.FragmentDetailBinding;
-import com.example.phobo.databinding.FragmentHomeBinding;
+import com.example.phobo.databinding.FragmentBookingBinding;
+import com.example.phobo.databinding.FragmentConceptConfigBinding;
 
-public class HomeFragment extends Fragment {
+public class ConceptConfigFragment extends Fragment {
 
-    FragmentHomeBinding binding;
+    FragmentConceptConfigBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentHomeBinding.inflate(getLayoutInflater());
+        binding = FragmentConceptConfigBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
 }

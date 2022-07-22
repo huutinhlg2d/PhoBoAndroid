@@ -1,4 +1,4 @@
-package com.example.phobo;
+package com.example.phobo.View;
 
 import android.content.Context;
 import android.content.SharedPreferences;

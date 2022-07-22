@@ -1,17 +1,15 @@
-package com.example.phobo;
+package com.example.phobo.View.Adapter;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.phobo.Model.Photographer;
-import com.example.phobo.Model.User;
 import com.example.phobo.databinding.FragmentItemBinding;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;

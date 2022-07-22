@@ -1,4 +1,4 @@
-package com.example.phobo;
+package com.example.phobo.View;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.phobo.Data.Api.UserApi;
 import com.example.phobo.Data.RetrofitInstance;
+import com.example.phobo.MainActivity;
 import com.example.phobo.Model.User;
 import com.example.phobo.databinding.FragmentLoginBinding;
 
@@ -77,7 +78,7 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull List<User> apiUser) {
 //                                Log.d("123", "onSuccess: "+apiUser.get(0).getEmail()+apiUser.get(0).getPassword());
-                        Intent intent = new Intent(getActivity(),MainActivity.class);
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
                         intent.putExtra("user", apiUser.get(0));
                         startActivity(intent);
                     }
