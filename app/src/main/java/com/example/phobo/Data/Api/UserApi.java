@@ -1,5 +1,6 @@
 package com.example.phobo.Data.Api;
 
+import com.example.phobo.Model.Photographer;
 import com.example.phobo.Model.User;
 
 import java.util.List;
@@ -13,6 +14,9 @@ import retrofit2.http.POST;
 public interface UserApi {
     @GET("user/all")
     Single<List<User>> getUsers();
+
+    @GET("user/photographer/all")
+    Single<List<Photographer>> getUsersRolePhotographer();
 
 
     @POST("user/login")

@@ -7,6 +7,7 @@ import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 
+import com.example.phobo.Model.Photographer;
 import com.example.phobo.Model.User;
 import com.example.phobo.ViewModel.UserApiService;
 import com.example.phobo.databinding.ActivityMainBinding;
@@ -29,24 +30,24 @@ public class MainActivity extends AppCompatActivity {
          View view = binding.getRoot();
          setContentView(view);
 
-         userApiService = new UserApiService();
-
-        userApiService.getAll().subscribeOn(Schedulers.newThread())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<List<User>>() {
-                    @Override
-                    public void onSuccess(@NonNull List<User> users) {
-                        Log.d("DEBUG", "start");
-                        for (User user: users) {
-                            Log.d("DEBUG", "get");
-                            Log.d("LIST", user.toString());
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        Log.d("ERROR", e.getMessage());
-                    }
-                });
+//         userApiService = new UserApiService();
+//
+//        userApiService.getUsersRolePhotographer().subscribeOn(Schedulers.newThread())
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .subscribeWith(new DisposableSingleObserver<List<Photographer>>() {
+//                    @Override
+//                    public void onSuccess(@NonNull List<Photographer> users) {
+//                        Log.d("DEBUG", "start");
+//                        for (Photographer user: users) {
+//                            Log.d("DEBUG", "get");
+//                            Log.d("LIST", user.toString());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(@NonNull Throwable e) {
+//                        Log.d("ERROR", e.getMessage());
+//                    }
+//                });
     }
 }
