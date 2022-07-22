@@ -29,24 +29,25 @@ public class MainActivity extends AppCompatActivity {
          View view = binding.getRoot();
          setContentView(view);
 
-         userApiService = new UserApiService();
-
-        userApiService.getAll().subscribeOn(Schedulers.newThread())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<List<User>>() {
-                    @Override
-                    public void onSuccess(@NonNull List<User> users) {
-                        Log.d("DEBUG", "start");
-                        for (User user: users) {
-                            Log.d("DEBUG", "get");
-                            Log.d("LIST", user.toString());
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        Log.d("ERROR", e.getMessage());
-                    }
-                });
+//         userApiService = new UserApiService();
+//
+//        userApiService.getAll().subscribeOn(Schedulers.newThread())
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .subscribeWith(new DisposableSingleObserver<List<User>>() {
+//                    @Override
+//                    public void onSuccess(@NonNull List<User> users) {
+//                        Log.d("DEBUG", "start");
+//                        for (User user: users) {
+//                            System.out.println(1);
+//                            Log.d("DEBUG", "get");
+//                            Log.d("LIST", user.toString());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(@NonNull Throwable e) {
+//                        Log.d("ERROR", e.getMessage());
+//                    }
+//                });
     }
 }
