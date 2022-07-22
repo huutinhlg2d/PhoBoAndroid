@@ -1,4 +1,4 @@
-package com.example.phobo.View;
+package com.example.phobo.View.Fragment.LoginFragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;

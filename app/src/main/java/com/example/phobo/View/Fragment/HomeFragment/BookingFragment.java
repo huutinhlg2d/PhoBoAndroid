@@ -1,4 +1,4 @@
-package com.example.phobo.View;
+package com.example.phobo.View.Fragment.HomeFragment;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
