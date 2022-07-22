@@ -15,11 +15,11 @@ public interface UserApi {
     Single<List<User>> getUsers();
 
 
-    @POST("/login")
+    @POST("user/login")
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     Single<List<User>> login(@Body User user);
 
-    @POST("/register")
+    @POST("user/register")
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
     Single<List<User>> register(@Body User user);
 
