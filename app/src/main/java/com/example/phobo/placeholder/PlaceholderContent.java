@@ -1,6 +1,6 @@
 package com.example.phobo.placeholder;
 
-import com.example.phobo.Model.Photographer;
+import com.example.phobo.model.Photographer;
 
 import java.util.ArrayList;
 import java.util.HashMap;

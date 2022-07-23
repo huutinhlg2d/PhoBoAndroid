@@ -1,9 +1,8 @@
-package com.example.phobo.Model;
+package com.example.phobo.model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class User implements Serializable {

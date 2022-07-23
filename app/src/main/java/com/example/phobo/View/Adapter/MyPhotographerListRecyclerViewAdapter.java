@@ -1,15 +1,20 @@
 package com.example.phobo.View.Adapter;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.phobo.Model.Photographer;
+import com.example.phobo.model.Photographer;
+import com.example.phobo.R;
 import com.example.phobo.databinding.FragmentItemBinding;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -39,12 +44,21 @@ public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Log.d("DEBUG", "onBindViewHolder: "+position+" ;"+mValues.get(position).toString());
         holder.mItem = mValues.get(position);
         holder.mRate.setText("Rate: "+mValues.get(position).getRate());
         holder.mName.setText("Name: "+mValues.get(position).getName());
         holder.mRole.setText(mValues.get(position).getRole().toString());
+        holder.mButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("userDetail", mValues.get(position));
+                Navigation.findNavController(v).navigate(R.layout.fragment_detail, bundle);
+            }
+        });
         Picasso.get().load(mValues.get(position).getAvatarUrl()).into(holder.mPhoto, new Callback() {
             @Override
             public void onSuccess() {
@@ -68,6 +82,7 @@ public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<
         public final TextView mRole;
         public final TextView mName;
         public final ImageView mPhoto;
+        public final Button mButton;
 
         public Photographer mItem;
 
@@ -77,6 +92,8 @@ public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<
             mRole = binding.txtRole;
             mRate = binding.txtRate;
             mPhoto = binding.ivPhotographer;
+            mButton = binding.btnDetail;
+
         }
 
         @Override
@@ -84,4 +101,6 @@ public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<
             return super.toString() + " '" + mName.getText() + "'";
         }
     }
+
+
 }

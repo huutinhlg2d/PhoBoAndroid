@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,7 @@ import android.view.ViewGroup;
 import com.example.phobo.Data.Api.UserApi;
 import com.example.phobo.Data.RetrofitInstance;
 import com.example.phobo.MainActivity;
-import com.example.phobo.Model.User;
+import com.example.phobo.model.User;
 import com.example.phobo.databinding.FragmentLoginBinding;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.phobo.Model;
+package com.example.phobo.model;
 
 public enum BookingState {
     WAITING,

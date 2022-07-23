@@ -1,10 +1,10 @@
-package com.example.phobo.Model;
+package com.example.phobo.model;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-public class Photographer extends User{
+public class Photographer extends User implements Serializable {
 
     float rate;
 

@@ -1,8 +1,6 @@
-package com.example.phobo.Model;
+package com.example.phobo.model;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Date;
 
 public class PhotographerConceptImage {
     @SerializedName("id")

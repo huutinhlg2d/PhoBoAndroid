@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.phobo.Model.Photographer;
+import com.example.phobo.model.Photographer;
 import com.example.phobo.View.Adapter.MyPhotographerListRecyclerViewAdapter;
 import com.example.phobo.R;
 import com.example.phobo.ViewModel.UserApiService;
@@ -60,6 +60,7 @@ public class PhotographerListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);

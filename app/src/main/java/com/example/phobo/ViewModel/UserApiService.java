@@ -2,8 +2,8 @@ package com.example.phobo.ViewModel;
 
 import com.example.phobo.Data.RetrofitInstance;
 import com.example.phobo.Data.Api.UserApi;
-import com.example.phobo.Model.Photographer;
-import com.example.phobo.Model.User;
+import com.example.phobo.model.Photographer;
+import com.example.phobo.model.User;
 
 import java.util.List;
 

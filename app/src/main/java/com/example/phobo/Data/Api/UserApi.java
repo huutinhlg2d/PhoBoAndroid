@@ -1,7 +1,7 @@
 package com.example.phobo.Data.Api;
 
-import com.example.phobo.Model.Photographer;
-import com.example.phobo.Model.User;
+import com.example.phobo.model.Photographer;
+import com.example.phobo.model.User;
 
 import java.util.List;
 

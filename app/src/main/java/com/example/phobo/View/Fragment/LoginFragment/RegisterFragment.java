@@ -1,7 +1,5 @@
 package com.example.phobo.View.Fragment.LoginFragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,8 +13,8 @@ import android.view.ViewGroup;
 
 import com.example.phobo.Data.Api.UserApi;
 import com.example.phobo.Data.RetrofitInstance;
-import com.example.phobo.Model.User;
-import com.example.phobo.Model.UserRole;
+import com.example.phobo.model.User;
+import com.example.phobo.model.UserRole;
 import com.example.phobo.databinding.FragmentRegisterBinding;
 
 import java.util.Date;

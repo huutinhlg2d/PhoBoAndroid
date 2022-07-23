@@ -1,4 +1,4 @@
-package com.example.phobo.Model;
+package com.example.phobo.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -19,4 +19,12 @@ public class PhotographerConcept {
 
     @SerializedName("photographerConceptImages")
     private Set<PhotographerConceptImage> photographerConceptImages;
+
+    public PhotographerConcept(int id, Photographer photographer, Concept concept, String durationConfig, Set<PhotographerConceptImage> photographerConceptImages) {
+        this.id = id;
+        this.photographer = photographer;
+        this.concept = concept;
+        this.durationConfig = durationConfig;
+        this.photographerConceptImages = photographerConceptImages;
+    }
 }
