@@ -74,7 +74,7 @@ public class RegisterFragment extends Fragment {
                     register(user);
                 }
                 else {
-                    Toast.makeText(getActivity(), "passworld repeat incorrect", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "password repeat incorrect", Toast.LENGTH_SHORT).show();
                 }
             }
         });

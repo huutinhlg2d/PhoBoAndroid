@@ -47,7 +47,7 @@
         android:layout_width="109dp"
         android:layout_height="41dp"
         android:gravity="center"
-        android:text="password :"
+        android:text="Password :"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
         android:layout_width="104dp"
         android:layout_height="38dp"
         android:gravity="center"
-        android:text="email :"
+        android:text="Email :"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,6 +83,7 @@
         app:layout_constraintVertical_bias="0.36" />
 
     <EditText
+        android:password="true"
         android:id="@+id/password_edt_login"
         android:layout_width="265dp"
         android:layout_height="55dp"
@@ -99,8 +100,8 @@
         android:layout_width="279dp"
         android:layout_height="134dp"
         android:layout_marginTop="84dp"
-        android:gravity="left"
-        android:text="login"
+        android:text="Login"
+        android:textAlignment="center"
         android:textSize="60sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"

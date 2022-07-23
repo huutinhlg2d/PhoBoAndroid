@@ -67,10 +67,10 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
         Booking booking = bookingList.get(position);
         holder.state.setText(booking.getState().toString());
         if(user.getRole().toString().equals("CUSTOMER")){
-            holder.name.setText(" Photographer" +booking.getPhotographer().getName()+"\n"+" Duration : " + String.valueOf(booking.getDuration())+"\n Concept"+booking.getConcept().getName());
+            holder.name.setText(" Photographer: " +booking.getPhotographer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
         }
         else{
-            holder.name.setText(" Customer"+booking.getCustomer().getName()+"\n"+" Duration : " + String.valueOf(booking.getDuration())+"\n Concept "+booking.getConcept().getName());
+            holder.name.setText(" Customer: "+booking.getCustomer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
         }
 
         setFabByState(booking,holder);
@@ -99,7 +99,9 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
 
     private void setFabByState(Booking booking,@NonNull BookingAdapter.ViewHolder holder){
         if(booking.getState().toString().equals("WAITING")){
+            Log.d("123", "setFabByState: "+booking.getState().toString());
             if(user.getRole().toString().equals("CUSTOMER")){
+                holder.cancelBtn.setVisibility(View.VISIBLE);
                 holder.cancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -108,6 +110,8 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
                 });
             }
             else{
+                holder.acceptBtn.setVisibility(View.VISIBLE);
+                holder.declineBtn.setVisibility(View.VISIBLE);
                 holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -124,14 +128,14 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
 
         }
         else{
-            Log.d("!23", "onCreateViewHolder: "+ booking.getState());
+            Log.d("456", "setFabByState: " + booking.getState().toString());
             if(user.getRole().toString().equals("CUSTOMER")){
             holder.cancelBtn.setVisibility(View.GONE);
             }
             else{
-
-                holder.acceptBtn.setVisibility(View.GONE);
-                holder.declineBtn.setVisibility(View.GONE);
+                Log.d("!23", "onCreateViewHolder: "+ booking.getState());
+                holder.acceptBtn.setVisibility(View.INVISIBLE);
+                holder.declineBtn.setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -149,7 +153,7 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
                     @Override
                     public void onNext(Booking booking) {
                         myBooking.setState(BookingState.CANCELED);
-                        holder.cancelBtn.setVisibility(View.GONE);
+                        holder.cancelBtn.setVisibility(View.INVISIBLE);
                         holder.state.setText(myBooking.getState().toString());
                     }
 
@@ -177,8 +181,8 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
                     @Override
                     public void onNext(Booking booking) {
                         myBooking.setState(BookingState.ACCEPTED);
-                        holder.acceptBtn.setVisibility(View.GONE);
-                        holder.declineBtn.setVisibility(View.GONE);
+                        holder.acceptBtn.setVisibility(View.INVISIBLE);
+                        holder.declineBtn.setVisibility(View.INVISIBLE);
                         holder.state.setText(myBooking.getState().toString());
                     }
 
@@ -206,8 +210,8 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
                     @Override
                     public void onNext(Booking booking) {
                         myBooking.setState(BookingState.DECLINED);
-                        holder.declineBtn.setVisibility(View.GONE);
-                        holder.acceptBtn.setVisibility(View.GONE);
+                        holder.declineBtn.setVisibility(View.INVISIBLE);
+                        holder.acceptBtn.setVisibility(View.INVISIBLE);
                         holder.state.setText(myBooking.getState().toString());
                     }
 

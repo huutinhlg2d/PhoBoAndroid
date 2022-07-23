@@ -14,6 +14,7 @@ public class RetrofitInstance {
     public static Retrofit getRetrofitInsctance(){
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd")
+                .setLenient()
                 .create();
         if(retrofit == null) {
             retrofit = new Retrofit.Builder()

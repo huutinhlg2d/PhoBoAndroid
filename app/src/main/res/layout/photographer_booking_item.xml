@@ -48,7 +48,8 @@
                 android:id="@+id/decline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Decline" />
+                android:text="Decline"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
