@@ -49,8 +49,10 @@ public class HistoryFragment extends Fragment {
         if (getArguments() != null) {
             user = (User) getArguments().getSerializable("user");
         }
-        user= loadUserFromSession();
-
+        else {
+            user= loadUserFromSession();
+        }
+        Log.d("DEBUG", "onCreate: " + user);
     }
 
     @Override

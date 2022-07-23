@@ -62,4 +62,19 @@ public class Booking {
     public void setPhotographer(Photographer photographer) {
         this.photographer = photographer;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", photographer=" + photographer +
+                ", concept=" + concept +
+                ", bookingDate=" + bookingDate +
+                ", bookingRate=" + bookingRate +
+                ", duration=" + duration +
+                ", note='" + note + '\'' +
+                ", state=" + state +
+                '}';
+    }
 }

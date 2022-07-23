@@ -40,8 +40,9 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
     public BookingAdapter(Context context, List<Booking> choiceItemList,User user) {
         this.context = context;
         this.bookingList = choiceItemList;
-        this.user=user;
-        bookingService= RetrofitInstance.getRetrofitInsctance().create(BookingService.class);
+        this.user = user;
+        Log.d("DEBUG", "BookingAdapter: " + user);
+        bookingService = RetrofitInstance.getRetrofitInsctance().create(BookingService.class);
     }
 
     @NonNull
@@ -66,11 +67,12 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
     public void onBindViewHolder(@NonNull BookingAdapter.ViewHolder holder, int position) {
         Booking booking = bookingList.get(position);
         holder.state.setText(booking.getState().toString());
+        Log.d("DEBUG", "onBindViewHolder: booking[" + position + "] " + booking);
         if(user.getRole().toString().equals("CUSTOMER")){
-            holder.name.setText(" Photographer: " +booking.getPhotographer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
+            holder.name.setText(" Photographer: " + booking.getPhotographer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
         }
         else{
-            holder.name.setText(" Customer: "+booking.getCustomer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
+            holder.name.setText(" Customer: "+ booking.getCustomer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
         }
 
         setFabByState(booking,holder);

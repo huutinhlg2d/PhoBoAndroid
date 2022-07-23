@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
@@ -37,14 +38,11 @@ public class MainActivity extends AppCompatActivity {
          View view = binding.getRoot();
          setContentView(view);
 
-
-        Log.d("test", "onCreate: "+getIntent().getSerializableExtra("user").toString());
-        Fragment fragment = new HistoryFragment();
-        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragmentContainerView, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
+//        Fragment fragment = new HistoryFragment();
+//        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.fragmentContainerView, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
 
 
 //        navController.navigate(R.id.historyFragment);
