@@ -13,12 +13,13 @@ public class RetrofitInstance {
 
     public static Retrofit getRetrofitInsctance(){
         Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd")
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX")
                 .create();
         if(retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(gson))
+//                    .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                     .build();
         }

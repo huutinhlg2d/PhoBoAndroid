@@ -1,15 +1,20 @@
 package com.example.phobo.Model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
-public class Photographer extends User{
-
+public class Photographer extends User implements Serializable {
+    @SerializedName("rate")
     float rate;
 
+    @SerializedName("bookings")
     Set<Booking> bookings;
 
+    @SerializedName("photographerConcepts")
     Set<PhotographerConcept> photographerConcepts;
 
     public Photographer(int id, String firebaseUid, String name, String email, String password, String avatarUrl, Date dateOfBirth, UserRole role, boolean isDeleted, float rate, Set<Booking> bookings, Set<PhotographerConcept> photographerConcepts) {

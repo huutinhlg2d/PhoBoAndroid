@@ -1,9 +1,19 @@
 package com.example.phobo.Model;
 
-public class Concept {
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+import java.util.Set;
+
+public class Concept implements Serializable {
+    @SerializedName("id")
     private int id;
 
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("bookings")
+    Set<Booking> bookings;
 
     public Concept(int id, String name) {
         this.id = id;
@@ -24,5 +34,13 @@ public class Concept {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Concept{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
