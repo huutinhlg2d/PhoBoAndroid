@@ -18,6 +18,10 @@ public class Photographer extends User{
         this.bookings = bookings;
         this.photographerConcepts = photographerConcepts;
     }
+    public Photographer(int id){
+        super(id);
+        this.id=id;
+    }
 
     public float getRate() {
         return rate;

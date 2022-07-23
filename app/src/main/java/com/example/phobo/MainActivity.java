@@ -1,7 +1,12 @@
 package com.example.phobo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
@@ -9,9 +14,11 @@ import android.view.View;
 
 import com.example.phobo.Model.Photographer;
 import com.example.phobo.Model.User;
+import com.example.phobo.View.Fragment.HomeFragment.HistoryFragment;
 import com.example.phobo.ViewModel.UserApiService;
 import com.example.phobo.databinding.ActivityMainBinding;
 
+import java.io.Serializable;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -29,6 +36,18 @@ public class MainActivity extends AppCompatActivity {
          binding = ActivityMainBinding.inflate(getLayoutInflater());
          View view = binding.getRoot();
          setContentView(view);
+
+
+        Log.d("test", "onCreate: "+getIntent().getSerializableExtra("user").toString());
+        Fragment fragment = new HistoryFragment();
+        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentContainerView, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+
+
+//        navController.navigate(R.id.historyFragment);
 
 //         userApiService = new UserApiService();
 //

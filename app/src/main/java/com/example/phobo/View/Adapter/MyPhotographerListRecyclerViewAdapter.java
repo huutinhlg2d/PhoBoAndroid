@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.example.phobo.Model.Photographer;
 import com.example.phobo.databinding.FragmentItemBinding;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Callback;
+//import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,17 +45,17 @@ public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<
         holder.mRate.setText("Rate: "+mValues.get(position).getRate());
         holder.mName.setText("Name: "+mValues.get(position).getName());
         holder.mRole.setText(mValues.get(position).getRole().toString());
-        Picasso.get().load(mValues.get(position).getAvatarUrl()).into(holder.mPhoto, new Callback() {
-            @Override
-            public void onSuccess() {
-//                    normalViewHolder.progressBar.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-        });
+//        Picasso.get().load(mValues.get(position).getAvatarUrl()).into(holder.mPhoto, new Callback() {
+//            @Override
+//            public void onSuccess() {
+////                    normalViewHolder.progressBar.setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onError(Exception e) {
+//
+//            }
+//        });
     }
 
     @Override

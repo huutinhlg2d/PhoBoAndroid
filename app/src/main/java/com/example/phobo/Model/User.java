@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class User implements Serializable {
     @SerializedName("id")
-    private int id;
+    protected int id;
 
     @SerializedName("firebaseUid")
     private String firebaseUid;
@@ -46,9 +46,14 @@ public class User implements Serializable {
         this.isDeleted = isDeleted;
     }
 
+
     public User( String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public User(int id) {
+        this.id = id;
     }
 
     public User(String name, String email, String password, Date dateOfBirth, UserRole role, boolean isDeleted) {
@@ -59,9 +64,9 @@ public class User implements Serializable {
         this.role = role;
         this.isDeleted = isDeleted;
     }
-    public User( String email) {
-        this.email = email;
-    }
+//    public User( String email) {
+//        this.email = email;
+//    }
 
     @Override
     public String toString() {
@@ -144,11 +149,9 @@ public class User implements Serializable {
         this.role = role;
     }
 
+
     public boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 }

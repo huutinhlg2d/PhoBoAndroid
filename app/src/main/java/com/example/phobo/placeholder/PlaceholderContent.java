@@ -36,7 +36,7 @@ public class PlaceholderContent {
 
     private static void addItem(Photographer item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.getId()+"", item);
+//        ITEM_MAP.put(item.getId()+"", item);
     }
 
     private static String makeDetails(int position) {

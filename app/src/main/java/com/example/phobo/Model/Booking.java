@@ -21,4 +21,45 @@ public class Booking {
     private String note;
 
     private BookingState state;
+
+
+    public BookingState getState() {
+        return state;
+    }
+
+    public void setState(BookingState state) {
+        this.state = state;
+    }
+
+    public Booking(BookingState state) {
+        this.state = state;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Photographer getPhotographer() {
+        return photographer;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public float getDuration() {
+        return duration;
+    }
+
+    public Concept getConcept() {
+        return concept;
+    }
+
+    public void setPhotographer(Photographer photographer) {
+        this.photographer = photographer;
+    }
 }

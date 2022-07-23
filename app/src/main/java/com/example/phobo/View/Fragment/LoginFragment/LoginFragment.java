@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Parcelable;
 import android.util.Log;
@@ -19,11 +20,18 @@ import com.example.phobo.Data.Api.UserApi;
 import com.example.phobo.Data.RetrofitInstance;
 import com.example.phobo.MainActivity;
 import com.example.phobo.Model.User;
+import com.example.phobo.Model.UserRole;
+import com.example.phobo.R;
 import com.example.phobo.databinding.FragmentLoginBinding;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Retrofit;
@@ -31,8 +39,7 @@ import retrofit2.Retrofit;
 public class LoginFragment extends Fragment {
 
     FragmentLoginBinding binding;
-    Retrofit retrofit;
-    String session=null;
+    UserApi userApi;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,69 +64,101 @@ public class LoginFragment extends Fragment {
     }
 
     private void setup(){
-        retrofit= RetrofitInstance.getRetrofitInsctance();
+        userApi= RetrofitInstance.getRetrofitInsctance().create(UserApi.class);
         setLoginEvent();
         loadSession();
+        setRegisterBtnEvent();
     }
     private void loadSession(){
         SharedPreferences sharedPreferences =getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-        session=sharedPreferences.getString("email","");
-        if(session!=null){
-            loadUserFromSession();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear().commit();
+        if(sharedPreferences.getString("email","").equals("")==false){
+            User user= loadUserFromSession(sharedPreferences);
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            intent.putExtra("user",user);
+            startActivity(intent);
         }
     }
-
-    private void loadUserFromSession(){
-        User user = new User(binding.loginEmail.getText().toString());
-        retrofit.create(UserApi.class).loadUser(user)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<List<User>>() {
-                    @Override
-                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull List<User> apiUser) {
-//                                Log.d("123", "onSuccess: "+apiUser.get(0).getEmail()+apiUser.get(0).getPassword());
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        intent.putExtra("user", apiUser.get(0));
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                        Log.d("123", "onFail: "+ e.getMessage());
-                    }
-                });
+    private User loadUserFromSession(SharedPreferences sharedPreferences){
+        int id=sharedPreferences.getInt("id",0);
+        String firebaseUid=sharedPreferences.getString("firebaseUid","");
+        String email =sharedPreferences.getString("email","");
+        String password =sharedPreferences.getString("password","");
+        String name =sharedPreferences.getString("name","");
+        String avatarUrl =sharedPreferences.getString("avatarUrl","");
+        UserRole role =UserRole.valueOf( sharedPreferences.getString("role",""));
+        boolean isDeleted= sharedPreferences.getBoolean("isDeleted",false);
+        return new User(id,firebaseUid,name,email,password,avatarUrl,new GregorianCalendar(2014, Calendar.APRIL,11).getTime(),role,isDeleted);
     }
+
     private void login(){
-        User user = new User(binding.loginEmail.getText().toString(),binding.password.getText().toString());
-        retrofit.create(UserApi.class).login(user)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<User>() {
+        User user = new User(binding.emailEdtLogin.getText().toString(),binding.passwordEdtLogin.getText().toString());
+        userApi.login(user)
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<User>() {
+
                     @Override
-                    public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull User apiUser) {
-//                                Log.d("123", "onSuccess: "+apiUser.get(0).getEmail()+apiUser.get(0).getPassword());
-                        SharedPreferences sharedPreferences =getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("email", apiUser.getEmail());
-                        editor.commit();
-                        Intent intent = new Intent(getActivity(),MainActivity.class);
-                        intent.putExtra("user", apiUser);
+                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(User user) {
+                        saveSessionUser(user);
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.putExtra("user",user);
                         startActivity(intent);
                     }
 
                     @Override
-                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                        Log.d("123", "onFail: "+ e.getMessage());
+                    public void onError(Throwable t) {
+                        Log.d("user", "error: " + t.getLocalizedMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
     }
 
     private void setLoginEvent(){
-        binding.signinBtn.setOnClickListener(new View.OnClickListener() {
+        binding.loginFabLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 login();
             }
         });
+    }
+    private void setRegisterBtnEvent(){
+        binding.registerFabLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment register = new RegisterFragment();
+                loadFragment(register);
+
+            }
+        });
+    }
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentContainerView, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+    private void saveSessionUser(User user){
+        SharedPreferences sharedPreferences =getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("hasUser",true);
+        editor.putString("email",user.getEmail());
+        editor.putString("password",user.getPassword());
+        editor.putString("name",user.getName());
+        editor.putInt("id",user.getId());
+        editor.putString("avatarUrl",user.getAvatarUrl());
+        editor.putString("firebaseUid",user.getFirebaseUid());
+        editor.putString("role",user.getRole().toString());
+        editor.putBoolean("isDeleted",user.isDeleted());
+        editor.commit();
     }
 }
