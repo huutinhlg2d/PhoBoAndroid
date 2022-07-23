@@ -92,7 +92,6 @@ public class PhotographerListFragment extends Fragment {
                             Log.d("DEBUG", "start");
                             users.addAll(usersT);
                             adapter.notifyDataSetChanged();
-
                         }
 
                         @Override
@@ -104,7 +103,7 @@ public class PhotographerListFragment extends Fragment {
             //int id, String firebaseUid, String name, String email, String password, String avatarUrl, Date dateOfBirth, UserRole role, boolean isDeleted, float rate, Set<Booking> bookings, Set<PhotographerConcept> photographerConcepts
 //            users.add(new Photographer(1,"1221","Trang","@gmail","123","", LocalDate.now(), UserRole.PHOTOGRAPHER,false,3.0f,null,null));
 //            users.add(new Photographer(2,"1221","Banana","@gmail","123","", LocalDate.now(), UserRole.PHOTOGRAPHER,false,3.0f,null,null));
-            adapter = new MyPhotographerListRecyclerViewAdapter(users);
+            adapter = new MyPhotographerListRecyclerViewAdapter(users, this.getActivity());
             recyclerView.setAdapter(adapter);
         }
         return view;

@@ -98,7 +98,7 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull User apiUser) {
 //                                Log.d("123", "onSuccess: "+apiUser.get(0).getEmail()+apiUser.get(0).getPassword());
-                        SharedPreferences sharedPreferences =getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("email", apiUser.getEmail());
                         editor.commit();

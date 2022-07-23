@@ -51,14 +51,10 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(String name, String email, String password, Date dateOfBirth, UserRole role, boolean isDeleted) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.role = role;
-        this.isDeleted = isDeleted;
+    public User(int id) {
+        this.id = id;
     }
+
     public User( String email) {
         this.email = email;
     }

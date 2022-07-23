@@ -1,15 +1,20 @@
 package com.example.phobo.View.Adapter;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.phobo.Model.Photographer;
+import com.example.phobo.R;
 import com.example.phobo.databinding.FragmentItemBinding;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -23,9 +28,13 @@ import java.util.List;
 public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<MyPhotographerListRecyclerViewAdapter.ViewHolder> {
 
     private final List<Photographer> mValues;
+    private final Context context;
 
-    public MyPhotographerListRecyclerViewAdapter(List<Photographer> items) {
+    public MyPhotographerListRecyclerViewAdapter(List<Photographer> items, Context context) {
         mValues = items;
+        this.context = context;
+
+        Log.d("DEBUG", "context: " + context);
 
         System.out.println("SIZE"+mValues.size());
     }
@@ -68,11 +77,23 @@ public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<
         public final TextView mRole;
         public final TextView mName;
         public final ImageView mPhoto;
+        public final View rootView;
 
         public Photographer mItem;
 
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
+            rootView = binding.getRoot();
+            rootView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    Log.d("DEBUG", "onClick: sendbundle = " + mItem);
+                    bundle.putSerializable("photographer",mItem);
+                    Navigation.findNavController(rootView).navigate(R.id.bookingFragment, bundle);
+                }
+            });
+
             mName = binding.txtName;
             mRole = binding.txtRole;
             mRate = binding.txtRate;

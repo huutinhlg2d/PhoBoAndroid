@@ -1,7 +1,11 @@
 package com.example.phobo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.navigation.fragment.NavHostFragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
@@ -22,13 +26,20 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private UserApiService userApiService;
+    public User currentUser;
+    public FragmentContainerView fragmentContainerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         binding = ActivityMainBinding.inflate(getLayoutInflater());
-         View view = binding.getRoot();
-         setContentView(view);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        fragmentContainerView = binding.fragmentContainerViewMain;
+        currentUser = (User) getIntent().getSerializableExtra("user");
+
+        Log.d("DEBUG", "currentUser: " + currentUser);
 
 //         userApiService = new UserApiService();
 //
