@@ -51,12 +51,11 @@ public class MyPhotographerListRecyclerViewAdapter extends RecyclerView.Adapter<
         holder.mName.setText("Name: "+mValues.get(position).getName());
         holder.mRole.setText(mValues.get(position).getRole().toString());
         holder.mButton.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("userDetail", mValues.get(position));
-                Navigation.findNavController(v).navigate(R.layout.fragment_detail, bundle);
+                Navigation.findNavController(v).navigate(R.id.detailFragment, bundle);
             }
         });
         Picasso.get().load(mValues.get(position).getAvatarUrl()).into(holder.mPhoto, new Callback() {

@@ -1,8 +1,9 @@
 package com.example.phobo.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Booking {
+public class Booking implements Serializable {
 
     private int id;
 
@@ -92,5 +93,20 @@ public class Booking {
 
     public void setState(BookingState state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", photographer=" + photographer +
+                ", concept=" + concept +
+                ", bookingDate=" + bookingDate +
+                ", bookingRate=" + bookingRate +
+                ", duration=" + duration +
+                ", note='" + note + '\'' +
+                ", state=" + state +
+                '}';
     }
 }

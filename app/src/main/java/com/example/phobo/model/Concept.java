@@ -1,6 +1,8 @@
 package com.example.phobo.model;
 
-public class Concept {
+import java.io.Serializable;
+
+public class Concept implements Serializable {
     private int id;
 
     private String name;
@@ -19,5 +21,13 @@ public class Concept {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Concept{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

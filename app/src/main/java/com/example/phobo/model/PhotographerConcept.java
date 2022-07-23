@@ -27,4 +27,55 @@ public class PhotographerConcept {
         this.durationConfig = durationConfig;
         this.photographerConceptImages = photographerConceptImages;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Photographer getPhotographer() {
+        return photographer;
+    }
+
+    public void setPhotographer(Photographer photographer) {
+        this.photographer = photographer;
+    }
+
+    public Concept getConcept() {
+        return concept;
+    }
+
+    public void setConcept(Concept concept) {
+        this.concept = concept;
+    }
+
+    public String getDurationConfig() {
+        return durationConfig;
+    }
+
+    public void setDurationConfig(String durationConfig) {
+        this.durationConfig = durationConfig;
+    }
+
+    public Set<PhotographerConceptImage> getPhotographerConceptImages() {
+        return photographerConceptImages;
+    }
+
+    public void setPhotographerConceptImages(Set<PhotographerConceptImage> photographerConceptImages) {
+        this.photographerConceptImages = photographerConceptImages;
+    }
+
+    @Override
+    public String toString() {
+        return "PhotographerConcept{" +
+                "id=" + id +
+                ", photographer=" + photographer +
+                ", concept=" + concept +
+                ", durationConfig='" + durationConfig + '\'' +
+                ", photographerConceptImages=" + photographerConceptImages +
+                '}';
+    }
 }

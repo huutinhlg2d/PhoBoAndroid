@@ -44,7 +44,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textSize="20sp"
-                        android:text="Name: "/>
+                        android:text="Name: @{userDetail.}"/>
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:scrollHorizontally="true"
-                        android:text="Rate: 5.0"
+                        android:text="Rate: "
                         android:textSize="18sp"
                         android:textColor="#C0C0C0"/>
                     <TextView
