@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.se.omapi.Session;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import com.example.phobo.databinding.FragmentDetailBinding;
 import com.example.phobo.model.Photographer;
 import com.example.phobo.model.PhotographerConcept;
+import com.example.phobo.model.User;
 import com.example.phobo.model.UserRole;
 import com.squareup.picasso.Picasso;
 
@@ -38,11 +40,15 @@ public class DetailFragment extends Fragment {
 
         binding = FragmentDetailBinding.inflate(getLayoutInflater());
         binding.setUserDetail(userDetail);
-        if (userDetail.getRole() == UserRole.PENDINGPHOTOGRAPHER){
-            binding.btnBook.setTextIsSelectable(false);
+        User user  = (User)getActivity().getIntent().getSerializableExtra("user");
+        if (UserRole.PHOTOGRAPHER == user.getRole()){
+            binding.btnBook.setVisibility(View.GONE);
+        }else{
+            binding.btnBook.setVisibility(View.VISIBLE);
         }
-        binding.txtName.setText("Name: "+userDetail.getName());
         binding.txtRate.setText("Rate: "+userDetail.getRate());
+
+        binding.txtName.setText("Name: "+userDetail.getName());
         binding.txtRole.setText("Role: "+userDetail.getRole());
 
         ArrayList<String> names = new ArrayList<String>();;
