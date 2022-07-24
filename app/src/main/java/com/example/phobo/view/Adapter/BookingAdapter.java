@@ -19,6 +19,7 @@ import com.example.phobo.R;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -64,10 +65,20 @@ public class BookingAdapter  extends  RecyclerView.Adapter<BookingAdapter.ViewHo
         holder.state.setText(booking.getState().toString());
         Log.d("DEBUG", "onBindViewHolder: booking[" + position + "] " + booking);
         if(user.getRole().toString().equals("CUSTOMER")){
-            holder.name.setText(" Photographer: " + booking.getPhotographer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
+            holder.name.setText(" Photographer: " + booking.getPhotographer().getName()+"\n"+
+                    " Duration: " + String.valueOf(booking.getDuration())+ "\n" +
+                    " Concept: "+booking.getConcept().getName() + "\n" +
+                    " Booking date: "+ new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss").format(booking.getBookingDate()) + "\n" +
+                    " Location " + booking.getLocation() + "\n" +
+                    " Note " + booking.getNote() + "\n");
         }
         else{
-            holder.name.setText(" Customer: "+ booking.getCustomer().getName()+"\n"+" Duration: " + String.valueOf(booking.getDuration())+"\n Concept: "+booking.getConcept().getName());
+            holder.name.setText(" Customer: "+ booking.getCustomer().getName()+"\n"+
+                    " Duration: " + String.valueOf(booking.getDuration())+ "\n" +
+                    " Concept: "+booking.getConcept().getName() + "\n" +
+                    " Booking date: "+ new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss").format(booking.getBookingDate()) + "\n" +
+                    " Location " + booking.getLocation() + "\n" +
+                    " Note " + booking.getNote() + "\n");
         }
 
         setFabByState(booking,holder);

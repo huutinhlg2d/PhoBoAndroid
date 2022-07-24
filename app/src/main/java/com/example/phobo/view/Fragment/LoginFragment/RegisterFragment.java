@@ -112,7 +112,7 @@ public class RegisterFragment extends Fragment {
                     @Override
                     public void onNext(String string) {
                         Log.d("user", "onNext: " +  string);
-                        Toast.makeText(getActivity(), "Register Success", Toast.LENGTH_SHORT).show();
+
                         getActivity().onBackPressed();
                     }
 

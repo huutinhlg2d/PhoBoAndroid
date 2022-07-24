@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_homeFragment_to_conceptConfigFragment"
             app:destination="@id/conceptConfigFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_photographerDetailFragment"
+            app:destination="@id/photographerDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
     </fragment>
     <fragment
         android:id="@+id/bookingFragment"
@@ -26,8 +32,8 @@
         android:label="fragment_booking"
         tools:layout="@layout/fragment_booking" >
         <action
-            android:id="@+id/action_bookingFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            android:id="@+id/action_bookingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -44,9 +50,6 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <action
-            android:id="@+id/action_detailFragment_to_bookingFragment"
-            app:destination="@id/bookingFragment" />
-        <action
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
@@ -59,4 +62,23 @@
             android:id="@+id/action_conceptConfigFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/photographerDetailFragment"
+        android:name="com.example.phobo.View.Fragment.HomeFragment.PhotographerDetailFragment"
+        android:label="fragment_photographer_detail"
+        tools:layout="@layout/fragment_photographer_detail" >
+        <action
+            android:id="@+id/action_photographerDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photographerListFragment"
+        android:name="com.example.phobo.View.Fragment.HomeFragment.PhotographerListFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.example.phobo.view.Fragment.LoginFragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

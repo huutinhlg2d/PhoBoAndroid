@@ -2,7 +2,9 @@ package com.example.phobo.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PhotographerConceptImage {
+import java.io.Serializable;
+
+public class PhotographerConceptImage implements Serializable {
     @SerializedName("id")
     private int id;
 

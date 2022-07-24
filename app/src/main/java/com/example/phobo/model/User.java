@@ -63,9 +63,9 @@ public class User implements Serializable {
         this.role = role;
         this.isDeleted = isDeleted;
     }
-//    public User( String email) {
-//        this.email = email;
-//    }
+    public User( String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {
@@ -148,9 +148,11 @@ public class User implements Serializable {
         this.role = role;
     }
 
-
     public boolean isDeleted() {
         return isDeleted;
     }
 
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 }

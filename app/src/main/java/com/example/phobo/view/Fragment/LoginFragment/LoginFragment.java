@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -132,15 +133,11 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 Fragment register = new RegisterFragment();
                 loadFragment(register);
-
             }
         });
     }
     private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragmentContainerView, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        Navigation.findNavController(getView()).navigate(R.id.registerFragment);
     }
     private void saveSessionUser(User user){
         SharedPreferences sharedPreferences =getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
